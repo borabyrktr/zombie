@@ -1,0 +1,56 @@
+#include "stm32f4xx.h"
+void delay(uint32_t time)
+{
+  while(time--);
+}
+
+int main(void)
+{
+  RCC->AHB1ENR |= RCC_AHB1ENR_GPIOAEN | RCC_AHB1ENR_GPIOCEN; // Enable clock for GPIOA and GPIOC
+  // Set LEDs as output
+ GPIOA->MODER &= ~(GPIO_MODER_MODER5 | GPIO_MODER_MODER6 | GPIO_MODER_MODER7 | GPIO_MODER_MODER8);
+  GPIOC->MODER &= ~(GPIO_MODER_MODER5 | GPIO_MODER_MODER6 | GPIO_MODER_MODER7 | GPIO_MODER_MODER8);
+   while(1)
+  {
+    // Turn on LEDs to display 'B'
+    GPIOA->BSRR = GPIO_BSRR_BS_5 | GPIO_BSRR_BS_6 | GPIO_BSRR_BS_7 | GPIO_BSRR_BS_8;
+    GPIOC->BSRR = GPIO_BSRR_BS_5 | GPIO_BSRR_BS_6 | GPIO_BSRR_BS_7;
+    delay(1000000); // Delay
+    
+    // Turn on LEDs to display 'o'
+    GPIOA->BSRR = GPIO_BSRR_BS_5 | GPIO_BSRR_BS_6 | GPIO_BSRR_BS_7;
+    GPIOC->BSRR = GPIO_BSRR_BS_5 | GPIO_BSRR_BS_6 | GPIO_BSRR_BS_7 | GPIO_BSRR_BS_8;
+    delay(1000000); // Delay
+
+    // Turn on LEDs to display 'r'
+    GPIOA->BSRR = GPIO_BSRR_BS_5 | GPIO_BSRR_BS_6 | GPIO_BSRR_BS_8;
+    GPIOC->BSRR = GPIO_BSRR_BS_5 | GPIO_BSRR_BS_6 | GPIO_BSRR_BS_7 | GPIO_BSRR_BS_8;
+    delay(1000000); // Delay
+
+    // Turn on LEDs to display 'a'
+    GPIOA->BSRR = GPIO_BSRR_BS_5 | GPIO_BSRR_BS_7 | GPIO_BSRR_BS_8;
+    GPIOC->BSRR = GPIO_BSRR_BS_5 | GPIO_BSRR_BS_6 | GPIO_BSRR_BS_7;
+    delay(1000000); // Delay
+
+    // Turn on LEDs to display ' '
+    GPIOA->BSRR = 0xFF << 5; // Turn off all LEDs on GPIOA
+    GPIOC->BSRR = 0xFF << 5; // Turn off all LEDs on GPIOC
+    delay(1000000); // Delay
+    
+    // Turn on LEDs to display 'B'
+    GPIOA->BSRR = GPIO_BSRR_BS_5 | GPIO_BSRR_BS_6 | GPIO_BSRR_BS_7 | GPIO_BSRR_BS_8;
+    GPIOC->BSRR = GPIO_BSRR_BS_5 | GPIO_BSRR_BS_6 | GPIO_BSRR_BS_7;
+    delay(1000000); // Delay
+
+    // Turn on LEDs to display 'a'
+    GPIOA->BSRR = GPIO_BSRR_BS_5 | GPIO_BSRR_BS_7 | GPIO_BSRR_BS_8;
+    GPIOC->BSRR = GPIO_BSRR_BS_5 | GPIO_BSRR_BS_6 | GPIO_BSRR_BS_7;
+    delay(1000000); // Delay
+
+    // Turn on LEDs to display 'y'
+    GPIOA->BSRR = GPIO_BSRR_BS_5
+    
+// I was able to produce the project on the breadboard, but without success.
+// In order not to use 9 LEDs and resistors in the circuit, a small voltage battery was preferred. As I set out from last year's seven-digit lab, I had a plan in mind.
+// because he was lighting certain leds in that lab. I could not run the project completely. I tried to get help from a friend who knows programming.
+// bu dersi beşinci alışım oluyor. projemin çok eskik olduğunu farkındayım bu derse yeterli alakayı göstermediğimi farkındayım. takdir sizin
